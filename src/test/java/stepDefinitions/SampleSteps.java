@@ -154,7 +154,7 @@ public class SampleSteps {
 
     @When("^I click Add$")
     public void iClickAdd() throws Throwable {
-        driver.findElement(By.id("addPersonBtn")).click();
+        driver.findElement(By.xpath("//*[@id=\"addPersonBtn\"]")).click();
     }
 
     @And ("^I enter new name$")
@@ -252,7 +252,7 @@ public class SampleSteps {
 
     @Then("^I do not see a new person$")
     public void iDoNotSeeANewPerson() throws Throwable{
-        String textInBox = driver.findElement(By.className("w3-container")).getText();
+       String textInBox = driver.findElement(By.className("w3-container")).getText();
         assertFalse(textInBox.contains("Alek"));
     }
 
@@ -264,10 +264,7 @@ public class SampleSteps {
 
     @Then("^I see a deleted person$")
     public void iSeeADeletedPerson () throws Throwable{
-        String textInBox = driver.findElement(By.xpath("/html/body/div[3]")).getText();
-        //Thread.sleep(15000);
-        //assertTrue(textInBox.contains("Mike"));
-        Thread.sleep(20000);
+        String textInBox = driver.findElement(By.xpath("/html/body/div[3]/div")).getText();
         assertTrue(textInBox.contains("Mike"));
     }
 
@@ -279,6 +276,7 @@ public class SampleSteps {
     @Then ("^Person form is empty$")
     public void personFormIsEmpty () throws Throwable{
         assertNull(driver.findElement(By.xpath("//*[@id='addEditPerson']")).getAttribute("value"));
+
     }
 }
 
